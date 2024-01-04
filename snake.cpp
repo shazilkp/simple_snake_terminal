@@ -75,15 +75,19 @@ void input()
       switch (_getch())
       {
       case 'a':
+         if (dir != RIGHT)
          dir = LEFT;
          break;
       case 's':
+         if (dir != TOP)
          dir = BOTTOM;
          break;
       case 'd':
+         if (dir != LEFT)
          dir = RIGHT;
          break;
       case 'w':
+         if (dir != BOTTOM)
          dir = TOP;
          break;
       case 'x':
@@ -129,6 +133,11 @@ void logic()
       fruitx = rand() % width;
       fruity = rand() % height;
    }
+   for(int i=0;i<score;i++){
+         if(histX[i] == x && histY[i] == y)
+         gameOver=true;
+      }
+   
 }
 
 int main()
@@ -140,5 +149,6 @@ int main()
       input();
       logic();
       Sleep(20);
+      
    }
 }
